@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Random Password Generator</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container">
+        <div class="card">
+            <h1>🔐 Password Generator</h1>
+            <p class="subtitle">Create strong, secure passwords with custom preferences</p>
+
+            <div class="password-display">
+                <div class="password-text placeholder" id="passwordText">Click generate to create password</div>
+                <button class="icon-btn" id="copyBtn" title="Copy to clipboard">
+                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 16H6a2 2 0 01-2-2V6a2 2 0 012-2h8a2 2 0 012 2v2m-6 12h8a2 2 0 002-2v-8a2 2 0 00-2-2h-8a2 2 0 00-2 2v8a2 2 0 002 2z" />
+                    </svg>
+                </button>
+                <button class="icon-btn" id="refreshBtn" title="Regenerate password">
+                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 4v5h.582m15.356 2A8.001 8.001 0 004.582 9m0 0H9m11 11v-5h-.581m0 0a8.003 8.003 0 01-15.357-2m15.357 2H15" />
+                    </svg>
+                </button>
+            </div>
+
+            <div class="strength-meter">
+                <div class="strength-label">
+                    <span>Password Strength:</span>
+                    <span class="strength-text" id="strengthText">-</span>
+                </div>
+                <div class="strength-bar">
+                    <div class="strength-fill" id="strengthFill"></div>
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label class="form-label" for="lengthSlider">Password Length: <span id="lengthValue">16</span></label>
+                <div class="slider-container">
+                    <input type="range" class="slider" id="lengthSlider" min="4" max="64" value="16">
+                    <div class="slider-value" id="lengthDisplay">16</div>
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label class="form-label" for="uppercase">Character Types:</label>
+                <div class="checkbox-group">
+                    <div class="checkbox-item">
+                        <input type="checkbox" class="checkbox" id="uppercase" checked>
+                        <label class="checkbox-label" for="uppercase">Uppercase Letters (A-Z)</label>
+                    </div>
+                    <div class="checkbox-item">
+                        <input type="checkbox" class="checkbox" id="lowercase" checked>
+                        <label class="checkbox-label" for="lowercase">Lowercase Letters (a-z)</label>
+                    </div>
+                    <div class="checkbox-item">
+                        <input type="checkbox" class="checkbox" id="numbers" checked>
+                        <label class="checkbox-label" for="numbers">Numbers (0-9)</label>
+                    </div>
+                    <div class="checkbox-item">
+                        <input type="checkbox" class="checkbox" id="symbols" checked>
+                        <label class="checkbox-label" for="symbols">Symbols (!@#$%^&amp;*)</label>
+                    </div>
+                </div>
+                <div class="error-message" id="charError">Please select at least one character type</div>
+            </div>
+
+            <div class="form-group">
+                <label class="form-label" for="excludeChars">Exclude Characters (optional):</label>
+                <input type="text" class="exclude-input" id="excludeChars" placeholder="e.g., 0O1lI">
+            </div>
+
+            <button class="btn btn-primary" id="generateBtn">
+                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z" />
+                </svg>
+                Generate Password
+            </button>
+        </div>
+    </div>
+
+    <div class="toast" id="toast">
+        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
+        </svg>
+        Password copied to clipboard!
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
